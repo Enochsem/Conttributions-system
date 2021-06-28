@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Funeral</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<style>
+		#title{
+	font-family: Dancing Script, cursive;
+	font-size: 60px;
+	margin: 5px;}
+	#descr{
+		
+		font-size: 20px
+	}
+	body{
+		display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	margin: 0;
+	}
+	.container {
+	/*background-color: #fff;*/
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	width: 600px;
+	max-width: 100%;
+}
+	label{
+		margin: 0;
+	}
+	</style>
+
+</head>
+<body>
+	<div class="container btn-light">
+
+		<div class="col-md-12" align="center" >
+			<h2 id="title">Fund Management</h2>
+			<p id="descr">Some random info or carefully selected instructions</p>
+		</div>
+
+		<form name='registration' method="POST" >
+			<label for="fname">Full name:</label>
+			<br>
+			<input required id="fname" type="text" size="30" name="name">
+
+			<br>
+
+			<label for="uphone">Contact No:</label>
+			<br>
+			<input required type="text" size="30" minlength="10" maxlength ="10" name="contact">
+
+			<br>
+			<label for="amt">Amount Received</label>
+			<br>
+			<input id="amt" type="text" required="" min="1" name="amount">
+
+			<br>
+			<label for="beneficiary">Beneficiary</label>
+			<br>
+			<select style="font-size: 20px" required="" name="beneficiary">
+				<option disabled="disabled" selected="">Please select beneficiary</option>
+				<option id="fam1">BENEFICIARY_1</option>
+				<option id="fam2">BENEFICIARY_2</option>
+				<option id="fam3">BENEFICIARY_3</option>	
+			</select>
+			<br>
+			<br>
+			<br>
+
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button type="submit" class="btn btn-primary">+Records</button>
+		</form>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
