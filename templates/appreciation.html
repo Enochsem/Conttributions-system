@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+
+
+{% block title %}
+	Thank You
+{% endblock %}
+
+
+
+{% block body %}
     <center>
-        <div class="container display-1">
-            <h1>THANK YOU</h1>
+        <div class="container m-5 justify-content-center d-flex">
+            <div class="row text-center text-primary"><h1 class="display-1">THANK YOU</h1></div>
         </div>
-        <div class="row">
-            <a href="/">back to home</a>
-            <a href="/admin">Admin</a>
+    
+        <div class="row mt-3 m-5 justify-content-center d-flex p-0">
+            <a class="btn btn-primary mr-3" href="/">back to home</a>
+            <a class=" btn btn-success" href="/admin"> go to admin</a>
         </div>
+        
     </center>
-</body>
-</html>
+{% endblock %}
