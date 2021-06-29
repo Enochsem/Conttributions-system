@@ -16,6 +16,13 @@
 		<h2 id="title">Fund Management</h2>
 		<p id="descr">Some random info or carefully selected instructions</p>
 	</div>
+	{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+      <h3 class="text text-success text-center">{{ message }}</h3>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
 	<form name='registration' method="POST" >
 
@@ -26,12 +33,12 @@
 
 		<div class="form-group">
 			<label for="uphone">Contact No:</label>
-			<input class="form-control" required type="text" size="30" minlength="10" maxlength ="10" name="contact">
+			<input class="form-control" required type="tel" size="30" minlength="10" maxlength ="10" name="contact">
 		</div>
 
 		<div class="form-group">
 			<label for="amt">Amount Received</label>
-			<input class="form-control" id="amt" type="text" required="" min="1" name="amount">
+			<input class="form-control" id="amt" type="number" required="" min="1" name="amount">
 		</div>
 
 		<div class="form-group">
@@ -44,6 +51,7 @@
 			</select>
 		</div>
 
+		<a href="/admin">Go to Admin</a>	
 		<div class="d-flex justify-content-end">
 			<div class="mx-3">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

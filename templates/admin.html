@@ -12,32 +12,34 @@
 {% block body %}
 <div class="container pb-2">
     <div class="text-primary text-center"><h1>Admin</h1></div>
-        <table id="table_id" class="display">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Amount</th>
-                    <th>Beneficiary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if lenght >0 %}
-                {% for contributor in range(lenght)%}
-                <tr>
-                    <td>{{contributors[contributor][1]}}</td>
-                    <td>{{contributors[contributor][2]}}</td>
-                    <td>{{contributors[contributor][3]}}</td>
-                    <td>{{contributors[contributor][4]}}</td>
-                </tr>
-                {% else %}
-                <tr>
-                    <center><td>No Contributions Yet</td></center>
-                </tr>
-                {% endfor%}
-                {% endif%}
-            </tbody>
-        </table>
+        <div id="tb_rapper">
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Amount</th>
+                        <th>Beneficiary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if lenght >0 %}
+                    {% for contributor in range(lenght)%}
+                    <tr>
+                        <td>{{contributors[contributor][1]}}</td>
+                        <td>{{contributors[contributor][2]}}</td>
+                        <td>{{contributors[contributor][3]}}</td>
+                        <td>{{contributors[contributor][4]}}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <center><td>No Contributions Yet</td></center>
+                    </tr>
+                    {% endfor%}
+                    {% endif%}
+                </tbody>
+            </table>
+        </div>
         <a class="btn btn-primary mr-3" href="/">back to home</a>
 </div>
 {% endblock %}

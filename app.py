@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for,  request, redirect
+from flask import Flask, render_template, url_for,  request, redirect, flash
 from db import DB
 from sms import SMS
 
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8zffhgf46@@]'
 
 BENEFICIARY_1 = "0546353625"
 BENEFICIARY_2 = "0203558351"
@@ -18,8 +19,8 @@ def index():
     if request.method == "POST":
         db = DB()
         name = request.form["name"]
-        contact = request.form["contact"]
-        amount = request.form["amount"]
+        contact = str(request.form["contact"])
+        amount = str(request.form["amount"])
         beneficiary = request.form["beneficiary"]
 
         contributor_name = name
@@ -32,13 +33,12 @@ def index():
             send_sms(contributor_name, amount, beneficiary,BENEFICIARY_2)
         elif beneficiary == "BENEFICIARY_3":
             send_sms(contributor_name, amount, beneficiary, BENEFICIARY_3)
-
-        return redirect(url_for("thanks"))
+        flash("SUCCESSFULL")
+        return redirect(url_for("index"))
 
     return render_template("index.html")
 
 
-# Funds
 
 
 
@@ -69,12 +69,22 @@ def get_total(beneficiary):
     
 def send_sms(contributor_name, contributor_amount, beneficiary_name, beneficiary_number):
     total_amount = get_total(beneficiary_name)
-    message = "You have received {}Ghs from {}. Your total balance is {}Ghs. Thank you".format(contributor_amount,contributor_name,total_amount)
+    message = "You have received {}GHS from {}. Your total balance is {}GHS. Thank you".format(contributor_amount,contributor_name,total_amount)
     recipient = BENEFICIARY_1
     sender = "Funds"
     sms = SMS(contributor_amount, contributor_name, beneficiary_number, sender, message)
     sms.send()
     print("sent")
+
+
+
+# @app.route("/testplayground", methods = ["GET","POST"])
+# def testplayground():
+#     if request.method == "POST":
+#         test = request.form["test"]
+#         flash("button clicked on ")
+#     return render_template("testplayground.html")
+
 
 
 if __name__ == "__main__":
