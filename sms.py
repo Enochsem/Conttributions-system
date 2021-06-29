@@ -8,7 +8,7 @@ class SMS :
         self.recipient = recipient
         self.message = message
         self.url = "https://sms.arkesel.com/sms/api?action=send-sms"
-        self.APIKEY = "OnhkSzhGTWVwaWtnUENlYWs="
+        self.APIKEY = "OjVOOWgxb1VMbnVLY213QWY="
         self.payload = {'api_key': self.APIKEY, 'to': self.recipient, 'from':self.sender,'sms':self.message}
 
 
