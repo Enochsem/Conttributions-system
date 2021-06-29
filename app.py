@@ -68,10 +68,11 @@ def get_total(beneficiary):
         total += int(data[amount][3])
         print(total)
     return total
+
     
 def send_sms(contributor_name, contributor_amount, contributor_contact, beneficiary_name, beneficiary_number):
     total_amount = get_total(beneficiary_name)
-    message = "You have received {:,.2f}GHS from {} ({}). Your total balance is {:,.2f}GHS. Thank you".format(str(contributor_amount),contributor_name,contributor_contact,str(total_amount))
+    message = "You have received {:,.2f}GHS from {} ({}). Your total balance is {:,.2f}GHS. Thank you".format(float(contributor_amount),contributor_name,contributor_contact,float(total_amount))
     recipient = BENEFICIARY_1
     sender = "Rev Nickel".upper()
     sms = SMS(contributor_amount, contributor_name, beneficiary_number, sender, message)
