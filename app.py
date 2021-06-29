@@ -15,6 +15,7 @@ TABLE_NAME = "contributor"
 @app.route("/", methods=["POST","GET"])
 def index():
     contributor_name = ""
+    contributor_contact =""
     amount = ""
     if request.method == "POST":
         db = DB()
@@ -24,16 +25,17 @@ def index():
         beneficiary = request.form["beneficiary"]
 
         contributor_name = name
+        contributor_contact = contact
 
         db.insert(TABLE_NAME, "name", "contact", "amount", "beneficiary", name, contact, amount, beneficiary)
         
         if beneficiary == "BENEFICIARY_1":
-            send_sms(contributor_name, amount, beneficiary,BENEFICIARY_1)
+            send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_1)
         elif beneficiary == "BENEFICIARY_2":
-            send_sms(contributor_name, amount, beneficiary,BENEFICIARY_2)
+            send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_2)
         elif beneficiary == "BENEFICIARY_3":
-            send_sms(contributor_name, amount, beneficiary, BENEFICIARY_3)
-        flash("{}'S CONTRIBUTION IS SUCCESSFULL".format(contributor_name).capitalize())
+            send_sms(contributor_name, amount,contributor_contact, beneficiary, BENEFICIARY_3)
+        flash("Successful")
         return redirect(url_for("index"))
 
     return render_template("index.html")
@@ -67,11 +69,11 @@ def get_total(beneficiary):
         print(total)
     return total
     
-def send_sms(contributor_name, contributor_amount, beneficiary_name, beneficiary_number):
+def send_sms(contributor_name, contributor_amount, contributor_contact, beneficiary_name, beneficiary_number):
     total_amount = get_total(beneficiary_name)
-    message = "You have received {}GHS from {}. Your total balance is {}GHS. Thank you".format(contributor_amount,contributor_name,total_amount)
+    message = "You have received {}GHS from {} ({}). Your total balance is {}GHS. Thank you".format(contributor_amount,contributor_name,contributor_contact,total_amount)
     recipient = BENEFICIARY_1
-    sender = "Funds"
+    sender = "Rev Nickel".upper()
     sms = SMS(contributor_amount, contributor_name, beneficiary_number, sender, message)
     sms.send()
     print("sent")
