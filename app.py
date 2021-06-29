@@ -29,11 +29,11 @@ def index():
 
         db.insert(TABLE_NAME, "name", "contact", "amount", "beneficiary", name, contact, amount, beneficiary)
         
-        if beneficiary == "BENEFICIARY_1":
+        if beneficiary == "Gideon":
             send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_1)
-        elif beneficiary == "BENEFICIARY_2":
+        elif beneficiary == "Ekow":
             send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_2)
-        elif beneficiary == "BENEFICIARY_3":
+        elif beneficiary == "General Family":
             send_sms(contributor_name, amount,contributor_contact, beneficiary, BENEFICIARY_3)
         flash("Successful")
         return redirect(url_for("index"))

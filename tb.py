@@ -21,3 +21,13 @@ except connection.Error:
 finally:
     if connection:
         connection.close()
+
+def delete_rows(tb_name):
+    connection = sqlite3.connect("contributors.db")
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM {}".format(tb_name))
+    connection.commit()
+    print("done")
+
+
+delete_rows("contributor")
