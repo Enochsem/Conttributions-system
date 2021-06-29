@@ -33,7 +33,7 @@ def index():
             send_sms(contributor_name, amount, beneficiary,BENEFICIARY_2)
         elif beneficiary == "BENEFICIARY_3":
             send_sms(contributor_name, amount, beneficiary, BENEFICIARY_3)
-        flash("SUCCESSFULL")
+        flash("{}'S CONTRIBUTION IS SUCCESSFULL".format(contributor_name).capitalize())
         return redirect(url_for("index"))
 
     return render_template("index.html")
