@@ -31,7 +31,6 @@ def index():
         
         if beneficiary == "Gideon":
             send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_1)
-           
         elif beneficiary == "Ekow":
             send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_2)
         elif beneficiary == "General Family":
@@ -79,6 +78,7 @@ def send_sms(contributor_name, contributor_amount, contributor_contact, benefici
     sms = SMS(contributor_amount, contributor_name, beneficiary_number, sender, message)
     sms.send()
     print("sent")
+
 
 
 # @app.route("/testplayground", methods = ["GET","POST"])
