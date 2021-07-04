@@ -10,7 +10,7 @@
 
 
 {% block body %}
-<div class="container pb-2">
+<div class="container pb-2 bg-light">
     <div class="text-primary text-center"><h1>Admin</h1></div>
         <div id="tb_rapper">
             <table id="table_id" class="display">
@@ -39,10 +39,19 @@
                     {% endif%}
                 </tbody>
                 <tfoot>
-                    
+
                 </tfoot>
             </table>
         </div>
-        <a class="btn btn-primary mr-3" href="/">back to home</a>
+        
+
+        <div class="mt-4">
+            <a class="btn btn-primary mr-3" href="/">back to home</a>
+<div class="float-right"><form method="POST"><button class="btn btn-light text-danger" type="submit">clear table</button></form></div>
+
+        </div>
+
 </div>
+
+
 {% endblock %}

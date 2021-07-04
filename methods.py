@@ -23,8 +23,7 @@ def beneficiary_sms(contributor_name, contributor_amount, contributor_contact, b
     recipient = beneficiary_number
     sender = "Nickel".upper()  #Rev Nickel
     message = """
-    You have received {:,.2f}GHS from {} ({}). Your total balance is {:,.2f}GHS. 
-    Thank you
+    You have received {:,.2f}GHS from {} ({}). Your total balance is {:,.2f}GHS.
     """.format(float(contributor_amount),contributor_name,contributor_contact,float(total_amount))
     
     sms = SMS(recipient, sender, message)
@@ -42,7 +41,7 @@ def contributor_sms(contributor_name, contributor_amount, contributor_contact):
     recipient = contributor_contact
     sender = "Nickel".upper()  #Rev Nickel
     message = """
-    Dear {}, your donation of {:,.2f} GHS have been recieved with thanks. We are grateful for your support. God bless you\nwww.evelynnickel.com
+    Dear {}, your donation of {:,.2f}GHS has been received with thanks. We are grateful for your support. God bless you\nwww.evelynnickel.com
     """.format(contributor_name,float(contributor_amount))
     
     sms = SMS(recipient, sender, message)
