@@ -1,22 +1,25 @@
 from flask import Flask, render_template, url_for,  request, redirect, flash
 from db import DB
 from sms import SMS
-
+from methods import *
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8zffhgf46@@]'
 
-BENEFICIARY_1 = "0546353625"
-BENEFICIARY_2 = "0203558351"
-BENEFICIARY_3 = "0554317909"
+gideon = "0546353625"
+ekow = "0203558351"
+general_family = "0554317909"
 
 TABLE_NAME = "contributor"
 
 @app.route("/", methods=["POST","GET"])
 def index():
+
     contributor_name = ""
     contributor_contact =""
-    amount = ""
+
+    amount = ""  #accumulator
+
     if request.method == "POST":
         db = DB()
         name = request.form["name"]
@@ -30,17 +33,18 @@ def index():
         db.insert(TABLE_NAME, "name", "contact", "amount", "beneficiary", name, contact, amount, beneficiary)
         
         if beneficiary == "Gideon":
-            send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_1)
+            beneficiary_sms(contributor_name, amount, contributor_contact, beneficiary, gideon)
+            
         elif beneficiary == "Ekow":
-            send_sms(contributor_name, amount,contributor_contact, beneficiary,BENEFICIARY_2)
+            beneficiary_sms(contributor_name, amount, contributor_contact, beneficiary, ekow)
+        
         elif beneficiary == "General Family":
-            send_sms(contributor_name, amount,contributor_contact, beneficiary, BENEFICIARY_3)
+            beneficiary_sms(contributor_name, amount, contributor_contact, beneficiary, general_family)
+        
         flash("Successful")
         return redirect(url_for("index"))
 
     return render_template("index.html")
-
-
 
 
 
@@ -57,36 +61,6 @@ def admin():
 def thanks():
     return render_template("appreciation.html")
 
-
-def get_total(beneficiary):
-    total = 0
-    db = DB()
-    data = db.select_where(TABLE_NAME, "beneficiary", beneficiary)
-    lenght =len(data)
-    print(data)
-    for amount in range(len(data)):
-        total += int(data[amount][3])
-        print(total)
-    return total
-
-    
-def send_sms(contributor_name, contributor_amount, contributor_contact, beneficiary_name, beneficiary_number):
-    total_amount = get_total(beneficiary_name)
-    message = "You have received {:,.2f}GHS from {} ({}). Your total balance is {:,.2f}GHS. Thank you".format(float(contributor_amount),contributor_name,contributor_contact,float(total_amount))
-    recipient = BENEFICIARY_1
-    sender = "Rev Nickel".upper()
-    sms = SMS(contributor_amount, contributor_name, beneficiary_number, sender, message)
-    sms.send()
-    print("sent")
-
-
-
-# @app.route("/testplayground", methods = ["GET","POST"])
-# def testplayground():
-#     if request.method == "POST":
-#         test = request.form["test"]
-#         flash("button clicked on ")
-#     return render_template("testplayground.html")
 
 
 
