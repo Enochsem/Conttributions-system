@@ -42,9 +42,7 @@ def contributor_sms(contributor_name, contributor_amount, contributor_contact):
     recipient = contributor_contact
     sender = "Nickel".upper()  #Rev Nickel
     message = """
-    Dear {}, your donation of {:,.2f} GHS have been recieved with thanks. We are grateful for your support. God bless you
-
-    www.evelynnickel.com
+    Dear {}, your donation of {:,.2f} GHS have been recieved with thanks. We are grateful for your support. God bless you\nwww.evelynnickel.com
     """.format(contributor_name,float(contributor_amount))
     
     sms = SMS(recipient, sender, message)
