@@ -8,8 +8,8 @@ class DB():
         self.cur = self.con.cursor()
 
 
-    def insert(self,tb_name,col_1,col_2,col_3,col_4,data1,data2,data3,data4):
-        self.cur.execute("INSERT INTO {}({},{},{},{})VALUES(?,?,?,?)".format(tb_name,col_1,col_2,col_3,col_4),(data1,data2,data3,data4))
+    def insert(self,tb_name,col_1,col_2,col_3,col_4,col_5,data1,data2,data3,data4,data5):
+        self.cur.execute("INSERT INTO {}({},{},{},{},{})VALUES(?,?,?,?,?)".format(tb_name,col_1,col_2,col_3,col_4,col_5),(data1,data2,data3,data4,data5))
         self.con.commit()
         return True
     

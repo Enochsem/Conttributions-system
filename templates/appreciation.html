@@ -1,4 +1,4 @@
-<!-- {% extends "base.html" %}
+{% extends "base.html" %}
 
 
 
@@ -9,16 +9,40 @@
 
 
 
-{% block body %}
-    <center>
-        <div class="container m-5 justify-content-center d-flex">
-            <div class="row text-center text-primary"><h1 class="display-1">THANK YOU</h1></div>
+{% block body %}        
+<div class="container p-3 bg-light" style="width: 600px;">
+
+    <div class="col-md-12" align="center" >
+        <h2 id="title">Admin Login</h2>
+    </div>
+    <!-- {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <small class="text text-success text-center">{{ message }}</small>
+    {% endfor %}
+    {% endif %}
+    {% endwith %} -->
+
+    <form name='Login' method="POST" >
+
+        <div class="form-group">
+            <label for="pass">Admin</label>
+            <input class="form-control" id="admin" type="text" required="" min="6" name="name">
         </div>
-    
-        <div class="row mt-3 m-5 justify-content-center d-flex p-0">
-            <a class="btn btn-primary mr-3" href="/">back to home</a>
-            <a class=" btn btn-success" href="/admin"> go to admin</a>
+
+        <div class="form-group">
+            <label for="pass">Access Key</label>
+            <input class="form-control" id="pass" type="password" required="" min="7" name="password">
+        </div>
+
+            
+        <div class="d-flex justify-content-end">
+            <div class="mx-3">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
         
-    </center>
-{% endblock %} -->
+    </form>
+</div>
+{% endblock %}

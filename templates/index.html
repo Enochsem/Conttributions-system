@@ -11,10 +11,10 @@
 
 {% block body %}
 <div class="container p-3 bg-light" style="width: 600px;">
-
+<small>{{admin_name}}</small>
 	<div class="col-md-12" align="center" >
 		<h2 id="title">Fund Management</h2>
-		<p id="descr">Some random info or carefully selected instructions</p>
+		<!-- <p id="descr">Some random info or carefully selected instructions</p> -->
 	</div>
 	{% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -47,7 +47,8 @@
 				<option disabled="disabled" selected="">Please select beneficiary</option>
 				<option id="fam1" value="Gideon">Gideon</option>
 				<option id="fam2" value="Ekow">Ekow</option>
-				<option id="fam3" value="General Family">General Family</option>	
+				<option id="fam3" value="Augusta">Augusta</option>
+				<option id="fam4" value="General Family">General Family</option>	
 			</select>
 		</div>
 
