@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8zffhgf46@@]'
 
 gideon = "0546353625"
-ekow = "0203558351"
-augusta = "0000000000"
+ekow = "0203558351" 
+augusta = "0243288066"
 general_family = "0554317909"
 
 TABLE_NAME = "contributor"
